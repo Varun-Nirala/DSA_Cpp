@@ -1,0 +1,9 @@
+cmake_minimum_required(VERSION 3.0)
+
+add_subdirectory(CompetitiveProgramming)
+add_subdirectory(DesignPattern)
+add_subdirectory(DS)
+add_subdirectory(STL_Style_DS)
+add_subdirectory(ThreadPool)
+add_subdirectory(Threads)
+add_subdirectory(CTCI)
