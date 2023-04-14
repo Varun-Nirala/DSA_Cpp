@@ -1,5 +1,5 @@
-#ifndef __REVERSE_LINKLIST_II_92_H__
-#define __REVERSE_LINKLIST_II_92_H__
+#ifndef __92_REVERSE_LINKLIST_II_H__
+#define __92_REVERSE_LINKLIST_II_H__
 
 #include <iostream>
 #include <vector>
@@ -59,4 +59,4 @@ private:
 	}
 };
 }
-#endif //#ifndef __REVERSE_LINKLIST_II_92_H__
+#endif //#ifndef __92_REVERSE_LINKLIST_II_H__

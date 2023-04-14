@@ -1,5 +1,5 @@
-#ifndef __ROTTEN_ORANGES_994_H__
-#define __ROTTEN_ORANGES_994_H__
+#ifndef __994_ROTTEN_ORANGES_H__
+#define __994_ROTTEN_ORANGES_H__
 
 #include <iostream>
 #include <vector>
@@ -112,4 +112,4 @@ private:
 	}
 };
 }
-#endif //#ifndef __ROTTEN_ORANGES_994_H__
+#endif //#ifndef __994_ROTTEN_ORANGES_H__

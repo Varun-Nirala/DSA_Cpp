@@ -1,5 +1,5 @@
-#ifndef __MERGE_K_SORTED_LIST_23_H__
-#define __MERGE_K_SORTED_LIST_23_H__
+#ifndef __23_MERGE_K_SORTED_LIST_H__
+#define __23_MERGE_K_SORTED_LIST_H__
 
 #include <iostream>
 #include <vector>
@@ -90,4 +90,4 @@ private:
 	}
 };
 }
-#endif //__MERGE_K_SORTED_LIST_23_H__
+#endif //__23_MERGE_K_SORTED_LIST_H__

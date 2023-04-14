@@ -1,5 +1,5 @@
-#ifndef __GROUP_ANAGRAMS_49_H__
-#define __GROUP_ANAGRAMS_49_H__
+#ifndef __49_GROUP_ANAGRAMS_H__
+#define __49_GROUP_ANAGRAMS_H__
 
 #include <vector>
 #include <string>
@@ -87,4 +87,4 @@ private:
     int             *m_pArr{};
 };
 }
-#endif //#ifndef __GROUP_ANAGRAMS_49_H__
+#endif //#ifndef __49_GROUP_ANAGRAMS_H__

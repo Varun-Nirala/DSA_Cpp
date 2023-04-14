@@ -1,5 +1,5 @@
-#ifndef __N_QUEENS_51_H__
-#define __N_QUEENS_51_H__
+#ifndef __51_N_QUEENS_H__
+#define __51_N_QUEENS_H__
 
 #include <iostream>
 #include <vector>
@@ -126,4 +126,4 @@ private:
     std::vector<std::vector<std::string>>       m_ans;
 };
 }
-#endif //#ifndef __N_QUEENS_51_H__
+#endif //#ifndef __51_N_QUEENS_H__

@@ -1,5 +1,5 @@
-#ifndef __SPLIT_A_STRING_IN_BALANCED_STRING_H__
-#define __SPLIT_A_STRING_IN_BALANCED_STRING_H__
+#ifndef __1221_SPLIT_A_STRING_IN_BALANCED_STRING_H__
+#define __1221_SPLIT_A_STRING_IN_BALANCED_STRING_H__
 
 #include <iostream>
 #include <string>
@@ -82,4 +82,4 @@ private:
 	}
 };
 }
-#endif //#ifndef __SPLIT_A_STRING_IN_BALANCED_STRING_H__
+#endif //#ifndef __1221_SPLIT_A_STRING_IN_BALANCED_STRING_H__

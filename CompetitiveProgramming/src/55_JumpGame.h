@@ -1,5 +1,5 @@
-#ifndef __JUMP_GAME_55_H__
-#define __JUMP_GAME_55_H__
+#ifndef __55_JUMP_GAME_H__
+#define __55_JUMP_GAME_H__
 
 #include <iostream>
 #include <vector>
@@ -73,4 +73,4 @@ private:
 	const int		U = 2;
 };
 }
-#endif //#ifndef __JUMP_GAME_55_H__
+#endif //#ifndef __55_JUMP_GAME_H__

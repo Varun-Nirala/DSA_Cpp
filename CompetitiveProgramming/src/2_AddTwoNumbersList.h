@@ -1,5 +1,5 @@
-#ifndef __ADD_TWO_NUMBERS_LIST_2_H__
-#define __ADD_TWO_NUMBERS_LIST_2_H__
+#ifndef __2_ADD_TWO_NUMBERS_LIST_H__
+#define __2_ADD_TWO_NUMBERS_LIST_H__
 
 #include <iostream>
 #include <stack>
@@ -112,4 +112,4 @@ private:
     }
 };
 }
-#endif  // __ADD_TWO_NUMBERS_LIST_2_H__
+#endif  // __2_ADD_TWO_NUMBERS_LIST_H__

@@ -1,5 +1,5 @@
-#ifndef __FIND_COMMON_CHARS_1002_H__
-#define __FIND_COMMON_CHARS_1002_H__
+#ifndef __1002_FIND_COMMON_CHARS_H__
+#define __1002_FIND_COMMON_CHARS_H__
 
 #include <algorithm>
 #include <iostream>
@@ -92,4 +92,4 @@ private:
 	}
 };
 }
-#endif //__FIND_COMMON_CHARS_1002_H__
+#endif //__1002_FIND_COMMON_CHARS_H__

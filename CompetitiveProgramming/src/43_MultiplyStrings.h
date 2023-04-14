@@ -1,5 +1,5 @@
-#ifndef __MULTIPLY_STRINGS_43_H__
-#define __MULTIPLY_STRINGS_43_H__
+#ifndef __43_MULTIPLY_STRINGS_H__
+#define __43_MULTIPLY_STRINGS_H__
 
 #include <vector>
 #include <iostream>
@@ -150,4 +150,4 @@ public:
     }
 };
 }
-#endif //#ifndef __MULTIPLY_STRINGS_43_H__
+#endif //#ifndef __43_MULTIPLY_STRINGS_H__

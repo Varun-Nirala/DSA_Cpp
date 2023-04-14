@@ -1,5 +1,5 @@
-#ifndef __ODD_EVEN_LINKLIST_328_H__
-#define __ODD_EVEN_LINKLIST_328_H__
+#ifndef __328_ODD_EVEN_LINKLIST_H__
+#define __328_ODD_EVEN_LINKLIST_H__
 
 #include <iostream>
 #include <vector>
@@ -75,4 +75,4 @@ private:
 	}
 };
 }
-#endif //#ifndef __ODD_EVEN_LINKLIST_328_H__
+#endif //#ifndef __328_ODD_EVEN_LINKLIST_H__

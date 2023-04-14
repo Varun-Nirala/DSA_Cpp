@@ -1,5 +1,5 @@
-#ifndef __DESIGN_LINKLIST_707_H__
-#define __DESIGN_LINKLIST_707_H__
+#ifndef __707_DESIGN_LINKLIST_H__
+#define __707_DESIGN_LINKLIST_H__
 
 #include <iostream>
 #include <vector>
@@ -263,4 +263,4 @@ public:
 	}
 };
 }
-#endif //#ifndef __DESIGN_LINKLIST_707_H__
+#endif //#ifndef __707_DESIGN_LINKLIST_H__

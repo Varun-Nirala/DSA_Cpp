@@ -1,5 +1,5 @@
-#ifndef __SPIRAL_MATRIX_II_59_H__
-#define __SPIRAL_MATRIX_II_59_H__
+#ifndef __59_SPIRAL_MATRIX_II_H__
+#define __59_SPIRAL_MATRIX_II_H__
 
 #include <iostream>
 #include <vector>
@@ -71,4 +71,4 @@ private:
 	}
 };
 }
-#endif //#ifndef __SPIRAL_MATRIX_II_59_H__
+#endif //#ifndef __59_SPIRAL_MATRIX_II_H__

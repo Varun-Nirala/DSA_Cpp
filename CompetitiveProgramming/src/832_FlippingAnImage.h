@@ -1,5 +1,5 @@
-#ifndef __FLIP_AN_IMAGE_832_H__
-#define __FLIP_AN_IMAGE_832_H__
+#ifndef __832_FLIP_AN_IMAGE_H__
+#define __832_FLIP_AN_IMAGE_H__
 
 #include <string>
 #include <iostream>
@@ -57,4 +57,4 @@ private:
 	}
 };
 }
-#endif //#ifndef __FLIP_AN_IMAGE_832_H__
+#endif //#ifndef __832_FLIP_AN_IMAGE_H__

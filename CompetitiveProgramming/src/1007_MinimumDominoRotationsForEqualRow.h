@@ -1,5 +1,5 @@
-#ifndef __MIN_DOMINO_ROTATION_1007_H__
-#define __MIN_DOMINO_ROTATION_1007_H__
+#ifndef __1007_MIN_DOMINO_ROTATION_H__
+#define __1007_MIN_DOMINO_ROTATION_H__
 
 #include <vector>
 #include <iostream>
@@ -86,4 +86,4 @@ private:
 	}
 };
 }
-#endif	//#ifndef __MIN_DOMINO_ROTATION_1007_H__
+#endif	//#ifndef __1007_MIN_DOMINO_ROTATION_H__

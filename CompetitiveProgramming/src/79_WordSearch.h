@@ -1,5 +1,5 @@
-#ifndef __WORD_SEARCH_79_H__
-#define __WORD_SEARCH_79_H__
+#ifndef __79_WORD_SEARCH_H__
+#define __79_WORD_SEARCH_H__
 
 #include <iostream>
 #include <vector>
@@ -239,4 +239,4 @@ private:
 	}
 };
 }
-#endif //#ifndef __WORD_SEARCH_79_H__
+#endif //#ifndef __79_WORD_SEARCH_H__

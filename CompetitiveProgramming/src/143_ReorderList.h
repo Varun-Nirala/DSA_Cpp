@@ -1,5 +1,5 @@
-#ifndef __REORDER_LINKLIST_143_H__
-#define __REORDER_LINKLIST_143_H__
+#ifndef __143_REORDER_LINKLIST_H__
+#define __143_REORDER_LINKLIST_H__
 
 #include <iostream>
 #include <vector>
@@ -74,4 +74,4 @@ public:
 	}
 };
 }
-#endif //#ifndef __REORDER_LINKLIST_143_H__
+#endif //#ifndef __143_REORDER_LINKLIST_H__

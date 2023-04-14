@@ -1,5 +1,5 @@
-#ifndef __PATH_SUM_III_437_H__
-#define __PATH_SUM_III_437_H__
+#ifndef __437_PATH_SUM_III_H__
+#define __437_PATH_SUM_III_H__
 
 #include <vector>
 #include <map>
@@ -68,7 +68,7 @@ private:
     int             m_ans{};
 };
 }
-#endif //__PATH_SUM_III_437_H__
+#endif //__437_PATH_SUM_III_H__
 
 
 /*

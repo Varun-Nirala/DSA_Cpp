@@ -1,5 +1,5 @@
-#ifndef __GCD_OF_STRINGS_1071_H__
-#define __GCD_OF_STRINGS_1071_H__
+#ifndef __1071_GCD_OF_STRINGS_H__
+#define __1071_GCD_OF_STRINGS_H__
 
 #include <iostream>
 #include "helper.h"
@@ -64,4 +64,4 @@ private:
 	}
 };
 }
-#endif // #ifndef __GCD_OF_STRINGS_1071_H__
+#endif // #ifndef __1071_GCD_OF_STRINGS_H__
