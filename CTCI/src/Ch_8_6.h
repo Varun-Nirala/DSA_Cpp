@@ -63,10 +63,10 @@ private:
 	stack<int>	disks;
 };
 
-class Solution
+class Solution_8_6
 {
 public:
-	Solution()
+	Solution_8_6()
 		: towers({ 0, 1, 2 })
 	{}
 
@@ -84,12 +84,10 @@ private:
 	vector<Tower> towers;
 };
 
-int main()
+void test_Ch_8_6()
 {
-	Solution sol;
+	Solution_8_6 sol;
 	int n = 3;
 
 	sol.moveAllDisks(n);
-
-	return 0;
 }

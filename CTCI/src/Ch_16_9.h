@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_16_9
 {
 	int negate(int num)
 	{
@@ -92,7 +92,7 @@ public:
 		int x = 0;
 		while (product + absb <= absa)
 		{
-			product + absb;
+			product += absb;
 			x++;
 		}
 
@@ -107,9 +107,9 @@ public:
 	}
 };
 
-int main()
+void test_Ch_16_9()
 {
-	Solution sol;
+	Solution_16_9 sol;
 
 	int a = 10;
 	int b = -11;
@@ -118,6 +118,4 @@ int main()
 	cout << "( " << a << " )" << " - " << "( " << b << " )" << " => " << sol.subtact(a, b) << endl;
 	cout << "( " << a << " )" << " * " << "( " << b << " )" << " => " << sol.multiply(a, b) << endl;
 	cout << "( " << a << " )" << " / " << "( " << b << " )" << " => " << sol.divide(a, b) << endl;
-
-	return 0;
 }

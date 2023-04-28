@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_1_6
 {
 public:
 	string countCompress(string &str)
@@ -48,12 +48,11 @@ public:
 	}
 };
 
-int main()
+void test_Ch_1_6()
 {
-	Solution sol;
+	Solution_1_6 sol;
 
 	string str("aabcccccaaa");
 
 	cout << sol.countCompress(str) << endl;
-	return 0;
 }

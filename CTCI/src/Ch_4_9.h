@@ -12,61 +12,46 @@
 #include <list>
 #include <map>
 
+#include "ds_binaryTree.h"
+
 using namespace std;
 
-const int NULL_NODE = INT_MIN;
-
-typedef struct Node
-{
-	int		val;
-	Node		*lc;
-	Node		*rc;
-	Node		*parent;
-
-	Node(int v, Node *p = nullptr)
-		: val(v)
-		, lc(nullptr)
-		, rc(nullptr)
-		, parent(p)
-	{}
-}Node;
-
-class Solution
+class Solution_4_9
 {
 public:
-	map<int, Node *> mMap;
+	map<int, BTreeNode*> mMap;
 
-	Node* createBST(vector<int> &vec)
+	BTreeNode* createBST(vector<int> &vec)
 	{
 		if (vec.empty())
 			return nullptr;
 		int i = 0;
-		Node *root = new Node(vec[i++]);
-		mMap[root->val] = root;
+		BTreeNode *pRoot = new BTreeNode(vec[i++]);
+		mMap[pRoot->val] = pRoot;
 		while (i < vec.size())
 		{
-			push(root, vec[i++]);
+			push(pRoot, vec[i++]);
 		}
 
-		return root;
+		return pRoot;
 	}
 
-	vector<list<int>> BST_Sequences(Node *root)
+	vector<list<int>> BST_Sequences(BTreeNode *pRoot)
 	{
 		vector<list<int>> result;
 
-		if (!root)
+		if (!pRoot)
 		{
 			result.push_back({});	// add empty list
 			return result;
 		}
 
 		list<int> prefix;
-		prefix.push_back(root->val);
+		prefix.push_back(pRoot->val);
 
 		/* Recurse on left and right subtrees */
-		vector<list<int>> leftSeq = BST_Sequences(root->lc);
-		vector<list<int>> rightSeq = BST_Sequences(root->rc);
+		vector<list<int>> leftSeq = BST_Sequences(pRoot->lc);
+		vector<list<int>> rightSeq = BST_Sequences(pRoot->rc);
 
 		/* Weave together each list from the left and right sides */
 		for (auto &left : leftSeq)
@@ -107,100 +92,56 @@ private:
 		second.insert(second.begin(), headSecond);
 	}
 
-	void push(Node *root, int val)
+	void push(BTreeNode *pRoot, int val)
 	{
-		if (root->val == val)
+		if (pRoot->val == val)
 		{
 			return;
 		}
-		else if (root->val < val)
+		else if (pRoot->val < val)
 		{
-			if (root->rc)
+			if (pRoot->rc)
 			{
-				push(root->rc, val);
+				push(pRoot->rc, val);
 			}
 			else
 			{
-				root->rc = new Node(val);
-				mMap[val] = root->rc;
+				pRoot->rc = new BTreeNode(val);
+				mMap[val] = pRoot->rc;
 				return;
 			}
 		}
 		else
 		{
-			if (root->lc)
+			if (pRoot->lc)
 			{
-				push(root->lc, val);
+				push(pRoot->lc, val);
 			}
 			else
 			{
-				root->lc = new Node(val);
-				mMap[val] = root->lc;
+				pRoot->lc = new BTreeNode(val);
+				mMap[val] = pRoot->lc;
 				return;
 			}
 		}
 	}
 };
-
-void inorder(Node *root)
+void test_Ch_4_9()
 {
-	if (root)
-	{
-		inorder(root->lc);
-		cout << root->val << " ";
-		inorder(root->rc);
-	}
-}
-
-void levelOrder(Node *root)
-{
-	if (!root)
-		return;
-	queue<Node *> que;
-	que.push(root);
-
-	int parentCount = 1;
-
-	while (!que.empty())
-	{
-		Node *node = que.front();
-		que.pop();
-
-		if (node)
-		{
-			cout << node->val << " ";
-			que.push(node->lc);
-			que.push(node->rc);
-		}
-		else
-		{
-			cout << "NULL ";
-		}
-
-		if (--parentCount == 0)
-		{
-			cout << endl;
-			parentCount = que.size();
-		}
-	}
-}
-
-int main()
-{
-	Solution sol;
+	Solution_4_9 sol;
 	vector<int> vec({ 2, 3, 1 });
 
-	Node *root = sol.createBST(vec);
+	BTreeNode *pRoot = sol.createBST(vec);
 
 	cout << "InOrder Traversal \n";
-	inorder(root);
+	inorder(pRoot);
 	cout << endl;
 
 	cout << "LevelOrder Traversal \n";
-	levelOrder(root);
+	levelOrder(pRoot);
 	cout << endl;
 
-	vector<list<int>> ans = sol.BST_Sequences(root);
+	vector<list<int>> ans = sol.BST_Sequences(pRoot);
 
 	for (int i = 0; i < ans.size(); ++i)
 	{
@@ -212,7 +153,4 @@ int main()
 		}
 		cout << endl;
 	}
-
-	return 0;
 }
-

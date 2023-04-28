@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_10_2
 {
 public:
 	void groupAnagrams(vector<string> &vec)
@@ -39,9 +39,9 @@ public:
 	}
 };
 
-int main()
+void test_Ch_10_2()
 {
-	Solution sol;
+	Solution_10_2 sol;
 	vector<string> vec = { "acre", "dog", "care", "god", "race", "ogd", "bali", "ilba" };
 
 	sol.groupAnagrams(vec);
@@ -51,6 +51,4 @@ int main()
 		cout << x << " ";
 	}
 	cout << endl;
-	return 0;
 }
-

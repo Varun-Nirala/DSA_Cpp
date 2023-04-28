@@ -9,42 +9,12 @@
 #include <vector>
 #include <set>
 
+#include "ds_list.h"
+
 using namespace std;
 
-typedef struct ListNode {
-	int val;
-	ListNode *next;
-	ListNode() : val(0), next(nullptr) {}
-	ListNode(int x) : val(x), next(nullptr) {}
-	ListNode(int x, ListNode *next) : val(x), next(next) {}
-}ListNode;
-
-ListNode* createList(const vector<int> &v)
+class Solution_2_1
 {
-	if (v.empty())
-		return nullptr;
-	ListNode *head = new ListNode(v[0]);
-	ListNode *p = head;
-
-	for (int i = 1; i < v.size(); ++i)
-	{
-		p->next = new ListNode(v[i]);
-		p = p->next;
-	}
-	return head;
-}
-
-void PrintList(ListNode *head)
-{
-	while (head)
-	{
-		cout << head->val << "->";
-		head = head->next;
-	}
-	cout << "NULL\n";
-}
-
-class Solution {
 public:
 	ListNode* removeDuplicateUsingExtraSpace(ListNode* head)
 	{
@@ -109,9 +79,9 @@ public:
 	}
 };
 
-int main()
+void test_Ch_2_1()
 {
-	Solution sol;
+	Solution_2_1 sol;
 
 	//ListNode *head = createList({ 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 6, 7});
 	ListNode *head = createList({ 1, 1 });
@@ -122,6 +92,4 @@ int main()
 	head = sol.removeDuplicateWithoutUsingExtraSpace(head);
 	cout << "Printing modified list : ";
 	PrintList(head);
-
-	return 0;
 }

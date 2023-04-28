@@ -16,8 +16,6 @@ public:
 	void test()
 	{
 		printf("Test : Solution23   -> Merge K Sorted Lists : START\n");
-		int m = 2;
-		int n = 4;
 
 		std::vector<ListNode<int>*> vec;
 		vec.push_back(createList({ 1, 4, 5 }));

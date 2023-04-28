@@ -16,7 +16,7 @@
 #include "994_RottenOranges.h"
 #include "1002_FindCommonChars.h"
 #include "1007_MinimumDominoRotationsForEqualRow.h"
-#include "1071_GCD_Of_String.h"
+#include "1071_GCD_Of_Strings.h"
 #include "1221_SplitAStringInBalancedStrings.h"
 
 #include "bitManipulation.h"

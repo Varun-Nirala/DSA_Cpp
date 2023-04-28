@@ -15,7 +15,7 @@
 using namespace std;
 
 enum Color { Black, White, Red, Yellow, Green };
-class Solution
+class Solution_8_10
 {
 	bool paintFillUtil(vector<vector<Color>> &screen, int r, int c, Color toChnage, Color changeTo)
 	{
@@ -79,9 +79,9 @@ void printScreen(vector<vector<Color>> &screen)
 	}
 }
 
-int main()
+void test_Ch_8_10()
 {
-	Solution sol;
+	Solution_8_10 sol;
 
 	vector<vector<Color>> screen{
 		{ Green, Black, Black, Black, Black },
@@ -103,6 +103,4 @@ int main()
 
 	sol.paintFill(screen, r, c, changeColor);
 	printScreen(screen);
-
-	return 0;
 }

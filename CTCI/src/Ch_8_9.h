@@ -15,7 +15,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_8_9
 {
 	string insertInside(string x, int i)
 	{
@@ -85,9 +85,9 @@ private:
 	}
 };
 
-int main()
+void test_Ch_8_9()
 {
-	Solution sol;
+	Solution_8_9 sol;
 	int n = 3;
 	set<string> ss = sol.generateParens(n);
 
@@ -103,6 +103,4 @@ int main()
 	{
 		cout << x << endl;
 	}
-	return 0;
 }
-

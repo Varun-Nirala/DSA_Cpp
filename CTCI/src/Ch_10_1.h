@@ -12,13 +12,15 @@
 
 using namespace std;
 
-class Solution
+class Solution_10_1
 {
 public:
 	bool mergeSorted(vector<int> &vecA, int sizeA, const vector<int> &vecB, int sizeB)
 	{
 		if (vecA.size() != sizeA + sizeB)
+		{
 			return false;
+		}
 
 		int idA = sizeA - 1;
 		int idB = sizeB - 1;
@@ -38,17 +40,18 @@ public:
 			}
 			idMerge--;
 		}
+		return true;
 	}
 };
 
-int main()
+void test_Ch_10_1()
 {
-	Solution sol;
+	Solution_10_1 sol;
 	vector<int> vecA = { 1, 3, 5, 7, 8, 9, 10 };
-	int sizeA = vecA.size();
+	int sizeA = (int)vecA.size();
 
 	vector<int> vecB = { 2, 4, 6, 11, 12, 13, 14 };
-	int sizeB = vecB.size();
+	int sizeB = (int)vecB.size();
 
 	vecA.resize(vecA.size() + vecB.size());
 
@@ -59,7 +62,4 @@ int main()
 		cout << x << " ";
 	}
 	cout << endl;
-
-	return 0;
 }
-

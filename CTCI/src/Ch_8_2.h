@@ -18,35 +18,34 @@ using namespace std;
 #define T true
 #define F false
 
-typedef struct Point
-{
-	int r = -1;
-	int c = -1;
-
-	Point(int rr, int cc)
-		:r(rr)
-		, c(cc)
-	{}
-
-	friend bool operator<(const Point &lhs, const Point &rhs)
-	{
-		return lhs.r < rhs.r || (lhs.r == rhs.r && lhs.c < rhs.c);
-	}
-
-	friend bool operator==(const Point &lhs, const Point &rhs)
-	{
-		return lhs.r == rhs.r && lhs.c == rhs.c;
-	}
-}Point;
-
-
-class Solution
+class Solution_8_2
 {
 private:
 	vector<vector<bool>> m_Grid;
 
 public:
-	Solution(vector<vector<bool>> g)
+	struct Point
+	{
+		int r = -1;
+		int c = -1;
+
+		Point(int rr, int cc)
+			:r(rr)
+			, c(cc)
+		{}
+
+		friend bool operator<(const Point& lhs, const Point& rhs)
+		{
+			return lhs.r < rhs.r || (lhs.r == rhs.r && lhs.c < rhs.c);
+		}
+
+		friend bool operator==(const Point& lhs, const Point& rhs)
+		{
+			return lhs.r == rhs.r && lhs.c == rhs.c;
+		}
+	};
+
+	Solution_8_2(vector<vector<bool>> g)
 		:m_Grid(g)
 	{}
 
@@ -57,8 +56,8 @@ public:
 
 		map<Point, bool> cache;
 
-		int lastRow = m_Grid.size() - 1;
-		int lastCol = m_Grid[0].size() - 1;
+		int lastRow = (int)m_Grid.size() - 1;
+		int lastCol = (int)m_Grid[0].size() - 1;
 		vector<Point> path;
 		if (pathUtil(lastRow, lastCol, path, cache))
 		{
@@ -92,21 +91,19 @@ private:
 	}
 };
 
-int main()
+void test_Ch_8_2()
 {
-	Solution sol({
+	Solution_8_2 sol({
 		{ T, T, T, T, T, T, T, T, T},
 		{ F, T, F, T, F, T, F, T, F},
 		{ T, T, T, T, T, T, T, T, T},
 		{ T, T, T, T, T, T, T, T, T},
 		});
 
-	vector<Point> path = sol.findPath();
+	vector<Solution_8_2::Point> path = sol.findPath();
 
 	for (int i = 0; i < path.size(); ++i)
 	{
 		cout << path[i].r << "," << path[i].c << endl;
 	}
-
-	return 0;
 }

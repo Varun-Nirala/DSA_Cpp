@@ -8,11 +8,11 @@
 #include <algorithm>
 #include <vector>
 #include <queue>
-#include "Ch_4_graph.h"
+#include "ds_graph.h"
 
 using namespace std;
 
-class Solution
+class Solution_4_1
 {
 public:
 	bool hasRoute(nsGraph::Graph &g, char nodeA, char nodeB)
@@ -49,8 +49,8 @@ public:
 					}
 					else
 					{
-						que.push(vec[i].node);
-						vec[i].node->state = nsGraph::VISITING;
+						que.push(vec[i].pNode);
+						vec[i].pNode->state = nsGraph::VISITING;
 					}
 				}
 			}
@@ -60,7 +60,7 @@ public:
 	}
 };
 
-int main()
+void test_Ch_4_1()
 {
 	nsGraph::Graph graph({
 		{'a', 'b', 0 },
@@ -73,9 +73,7 @@ int main()
 
 	graph.print();
 
-	Solution sol;
+	Solution_4_1 sol;
 	char first = 'b', last = 'd';
 	std::cout << "Can we reach from " << first << " to " << last << " : " << boolalpha << sol.hasRoute(graph, first, last) << endl;
-
-	return 0;
 }

@@ -14,9 +14,11 @@
 #include <map>
 #include <algorithm>
 
+#include "common.h"
+
 using namespace std;
 
-class Solution
+class Solution_10_5
 {
 	int search(const vector<string> &vec, int left, int right, string val)
 	{
@@ -72,7 +74,7 @@ public:
 	void find(const vector<string> &vec, string val)
 	{
 		cout << "searching for " << val << "\n";
-		int id = search(vec, 0, vec.size() - 1, val);
+		int id = search(vec, 0, (int)vec.size() - 1, val);
 		if (id != -1)
 		{
 			cout << "Found " << "vec[" << id << "] = " << val << endl;
@@ -84,27 +86,14 @@ public:
 	}
 };
 
-template <typename T>
-void PrintArray(const vector<T> &vec)
+void test_Ch_10_5()
 {
-	cout << "Printing Array : ";
-	for (auto x : vec)
-	{
-		cout << x << " ";
-	}
-	cout << endl;
-}
-
-int main()
-{
-	Solution sol;
+	Solution_10_5 sol;
 	vector<string> vec = { "at", "", "", "", "ball", "", "", "cat", "", "", "dad", "" };
 
-	PrintArray(vec);
+	PrintArray(vec, std::string("\n\nPrinting Array"));
 
 	string str = "ball";
 
 	sol.find(vec, str);
-
-	return 0;
 }

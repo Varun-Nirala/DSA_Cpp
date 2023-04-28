@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_1_1
 {
 	public:
 		bool isUnique(string &str)
@@ -28,11 +28,10 @@ class Solution
 		}
 };
 
-int main()
+void test_Ch_1_1()
 {
 	string str("abcab");
-	Solution sol;
+	Solution_1_1 sol;
 
 	cout << boolalpha << sol.isUnique(str) << endl;
-	return 0;
 }

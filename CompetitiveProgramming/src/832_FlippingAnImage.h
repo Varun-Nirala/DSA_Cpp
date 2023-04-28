@@ -40,12 +40,12 @@ private:
 		int mid = 0;
 		if (A[0].size() % 2 != 0)
 		{
-			mid = A[0].size() / 2;
+			mid = static_cast<int>(A[0].size()) / 2;
 		}
 
-		for (int i = 0; i < A.size(); ++i)
+		for (int i = 0; i < static_cast<int>(A.size()); ++i)
 		{
-			for (int l = 0, r = A[0].size() - 1; l <= r; ++l, --r)
+			for (int l = 0, r = static_cast<int>(A[0].size()) - 1; l <= r; ++l, --r)
 			{
 				int val = !A[i][l];
 				A[i][l] = !A[i][r];

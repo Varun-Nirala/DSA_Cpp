@@ -105,7 +105,7 @@ private:
 	{
 		std::stack<RecData> revisitStack;
 
-		queue<Pos> que;
+		std::queue<Pos> que;
 		que.push(inpos);
 
 		std::vector<bool> visited(board.size() * board[0].size(), false);

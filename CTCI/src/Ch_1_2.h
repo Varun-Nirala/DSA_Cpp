@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_1_2
 {
 public:
 	bool checkPermutation(string &strA, string &strB)
@@ -35,12 +35,11 @@ public:
 	}
 };
 
-int main()
+void test_Ch_1_2()
 {
 	string strA("abcb");
 	string strB("bcaa");
-	Solution sol;
+	Solution_1_2 sol;
 
 	cout << boolalpha << sol.checkPermutation(strA, strB) << endl;
-	return 0;
 }

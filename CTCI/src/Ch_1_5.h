@@ -14,13 +14,13 @@
 
 using namespace std;
 
-class Solution
+class Solution_1_5
 {
 public:
 	bool oneAway(string &strA, string &strB)
 	{
-		int aSize = strA.size();
-		int bSize = strB.size();
+		int aSize = (int)strA.size();
+		int bSize = (int)strB.size();
 		if (aSize - bSize > 1 || aSize - bSize < -1)
 			return false;
 
@@ -47,7 +47,7 @@ public:
 			if (aSize > bSize)
 				swap(aSize, bSize);
 
-			int numOfEdits = 0;
+			numOfEdit = 0;
 			for (int i = 0, j = 0; i < aSize; ++i, ++j)
 			{
 				if (minStr[i] != maxStr[j])
@@ -63,9 +63,9 @@ public:
 	}
 };
 
-int main()
+void test_Ch_1_5()
 {
-	Solution sol;
+	Solution_1_5 sol;
 
 	vector<string> vecA{ "pale", "pales", "pale", "pale" };
 	vector<string> vecB{ "ple", "pale", "bale", "bake" };
@@ -82,5 +82,4 @@ int main()
 			cout << "FAIL :: " << boolalpha << ans[i] << "\t" << vecA[i] << " -> " << vecB[i] << endl;
 		}
 	}
-	return 0;
 }

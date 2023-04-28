@@ -9,13 +9,13 @@
 
 using namespace std;
 
-class Solution
+class Solution_1_4
 {
 private:
 	bool isPalindrome(const string &str)
 	{
 		int lt = 0;
-		int rt = str.size() - 1;
+		int rt = (int)str.size() - 1;
 
 		while (lt < rt)
 		{
@@ -69,9 +69,9 @@ public:
 	}
 };
 
-int main()
+void test_Ch_1_4()
 {
-	Solution sol;
+	Solution_1_4 sol;
 	string str("Tact Coa");
 	cout << boolalpha << sol.checkIsAnyPermutationPalindrome(str) << endl;
 
@@ -79,6 +79,4 @@ int main()
 	{
 		cout << (1 << i) << endl;
 	}
-
-	return 0;
 }

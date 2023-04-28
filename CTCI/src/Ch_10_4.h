@@ -11,6 +11,8 @@
 #include <map>
 #include <algorithm>
 
+#include "common.h"
+
 using namespace std;
 
 class Listy
@@ -34,7 +36,7 @@ private:
 	vector<int>		m_vec;
 };
 
-class Solution
+class Solution_10_4
 {
 	int search(const Listy &listy, int left, int right, int val)
 	{
@@ -85,26 +87,12 @@ public:
 	}
 };
 
-template <typename T>
-void PrintArray(const vector<T> &vec)
+void test_Ch_10_4()
 {
-	cout << "Printing Array : ";
-	for (auto x : vec)
-	{
-		cout << x << " ";
-	}
-	cout << endl;
-}
-
-int main()
-{
-	Solution sol;
+	Solution_10_4 sol;
 	Listy ll({ 1, 3, 4, 5, 7, 10, 14, 15, 16, 19, 20, 25 });
 
-	PrintArray(ll.getVec());
+	PrintArray(ll.getVec(), std::string("\n\nPrinting Array"));
 
 	sol.find(ll, 25);
-
-
-	return 0;
 }

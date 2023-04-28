@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_8_11
 {
 	int makeChangeutil(int amount, const vector<int> &denoms, int index, vector<vector<int>> &mm)
 	{
@@ -46,10 +46,9 @@ public:
 	}
 };
 
-int main()
+void test_Ch_8_11()
 {
-	Solution sol;
+	Solution_8_11 sol;
 
 	cout << sol.makeChange(100);
-	return 0;
 }

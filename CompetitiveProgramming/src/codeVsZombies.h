@@ -32,13 +32,13 @@ int findDistance(int x1, int y1, int x2, int y2)
     yDis = abs(y2-y1);
     xDis = abs(x2-x1);
     ans = xDis*xDis + yDis*yDis;
-    ans = sqrt(ans);
+    ans = (int)sqrt(ans);
     return ans;
 }
 
 int moveTowardZombie()
 {
-    int size = zVector.size();
+    int size = (int)zVector.size();
     vector<int> zombieCircle(size, 0);
     
     int max = -1;
@@ -81,10 +81,10 @@ int moveTowardZombie()
 int NumberOfHumanWeCanSave(int ashX, int ashY, vector<int> &vHumanId, vector<int> &vStepDiff)
 {
     int weCanSave = 0;
-    int zombieToHuman = INT_MAX;
+    //int zombieToHuman = INT_MAX;
     
-    int sizeZ = zVector.size();
-    int sizeH = hVector.size();
+    int sizeZ = (int)zVector.size();
+    int sizeH = (int)hVector.size();
     
     vector<int> stepsFromZombie(sizeH, INT_MAX);
     vector<int> stepsFromAsh(sizeH, INT_MAX);

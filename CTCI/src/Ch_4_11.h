@@ -13,159 +13,57 @@
 #include <list>
 #include <map>
 
+#include "ds_binaryTree.h"
+
 using namespace std;
 
-const int NULL_NODE = INT_MIN;
-
-typedef struct TreeNode
+class Solution_4_11
 {
-	int			val;
-	int			size;
-	TreeNode		*lc;
-	TreeNode		*rc;
-
-	TreeNode(int data)
-		: val(data)
-		, size(1)
-		, lc(nullptr)
-		, rc(nullptr)
-	{}
-
-	void insertInOrder(int data)
-	{
-		if (data < val)
-		{
-			if (lc)
-			{
-				lc->insertInOrder(data);
-			}
-			else
-			{
-				lc = new TreeNode(data);
-			}
-		}
-		else
-		{
-			if (rc)
-			{
-				rc->insertInOrder(data);
-			}
-			else
-			{
-				rc = new TreeNode(data);
-			}
-		}
-		size++;
-	}
-
-	TreeNode *getIthNode(int i)
-	{
-		int leftSize = lc == nullptr ? 0 : lc->size;
-
-		if (i < leftSize)
-		{
-			return lc->getIthNode(i);
-		}
-		else if (i == leftSize)
-		{
-			return this;
-		}
-		else
-		{
-			return rc->getIthNode(i - (leftSize + 1));
-		}
-	}
-}TreeNode;
-
-void inorder(TreeNode *root)
-{
-	if (root)
-	{
-		inorder(root->lc);
-		cout << root->val << " ";
-		inorder(root->rc);
-	}
-}
-
-void levelOrder(TreeNode *root)
-{
-	if (!root)
-		return;
-	queue<TreeNode *> que;
-	que.push(root);
-
-	int parentCount = 1;
-
-	while (!que.empty())
-	{
-		TreeNode *node = que.front();
-		que.pop();
-
-		if (node)
-		{
-			cout << node->val << "[" << node->size << "]" << ", ";
-			que.push(node->lc);
-			que.push(node->rc);
-		}
-		else
-		{
-			cout << "NULL ";
-		}
-
-		if (--parentCount == 0)
-		{
-			cout << endl;
-			parentCount = que.size();
-		}
-	}
-}
-
-
-class Solution
-{
-	TreeNode *root = nullptr;
+	BTreeNode *m_pRoot = nullptr;
 public:
 	int size()
 	{
-		return root->size;
+		return m_pRoot->size;
 	}
 
 	void insertInOrder(int data)
 	{
-		if (!root)
+		if (!m_pRoot)
 		{
-			root = new TreeNode(data);
-			root->size = 0;
+			m_pRoot = new BTreeNode(data);
+			m_pRoot->size = 0;
 		}
-		root->insertInOrder(data);
+		m_pRoot->insertInOrder(data);
 	}
 
-	TreeNode* getRandom()
+	BTreeNode* getRandom()
 	{
-		if (!root)
+		if (!m_pRoot)
+		{
 			return nullptr;
+		}
 
 		int index = rand();
 		cout << "Random no = " << index;
 		index = index % size();
 		cout << ", Norm no = " << index << " ";
-		return root->getIthNode(index);
+		return m_pRoot->getIthNode(index);
 	}
 
 	void printInOrder()
 	{
-		inorder(root);
+		inorder(m_pRoot);
 	}
 
 	void printLevelOrder()
 	{
-		levelOrder(root);
+		levelOrder(m_pRoot);
 	}
 };
 
-int main()
+void test_Ch_4_11()
 {
-	Solution sol;
+	Solution_4_11 sol;
 	vector<int> vec({ 20, 10, 30, 5, 15, 35, 3, 7, 17 });
 
 	for (auto &x : vec)
@@ -183,6 +81,4 @@ int main()
 	{
 		cout << sol.getRandom()->val << endl;
 	}
-
-	return 0;
 }

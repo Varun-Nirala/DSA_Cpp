@@ -15,7 +15,7 @@ using namespace std;
 
 const int GRID_SIZE = 8;
 
-class Solution
+class Solution_8_12
 {
 	bool checkValid(vector<int> &columns, int row1, int col1)
 	{
@@ -69,11 +69,9 @@ public:
 	}
 };
 
-int main()
+void test_Ch_8_12()
 {
-	Solution sol;
+	Solution_8_12 sol;
 
 	sol.eightQueens();
-	return 0;
 }
-

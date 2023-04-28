@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_8_7
 {
 public:
 	// Approach 1 : Building from permutation of first n-1 characters
@@ -46,7 +46,7 @@ public:
 	// Approach 2 : Building from permutation of all n-1 character substrings
 	vector<string> getPerms_2(string remainder)
 	{
-		int size = remainder.size();
+		int size = (int)remainder.size();
 
 		vector<string> result;
 
@@ -72,9 +72,9 @@ public:
 	}
 };
 
-int main()
+void test_Ch_8_7()
 {
-	Solution sol;
+	Solution_8_7 sol;
 
 	vector<string> permutations = sol.getPerms_2("abc");
 
@@ -82,6 +82,4 @@ int main()
 	{
 		cout << x << endl;
 	}
-
-	return 0;
 }

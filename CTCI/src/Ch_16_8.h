@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_16_8
 {
 	const vector<string> smalls = { "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven",
 								"Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen" };
@@ -102,11 +102,10 @@ public:
 	}
 };
 
-int main()
+void test_Ch_16_8()
 {
-	Solution sol;
+	Solution_16_8 sol;
 
 	int num = -19'235;
 	cout << num << " => " << sol.convert(num) << endl;
-	return 0;
 }

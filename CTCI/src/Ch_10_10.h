@@ -21,7 +21,7 @@
 
 using namespace std;
 
-typedef struct RankedNode
+struct RankedNode
 {
 	RankedNode	*lc;
 	RankedNode	*rc;
@@ -80,12 +80,12 @@ typedef struct RankedNode
 			}
 		}
 	}
-}RankedNode;
+};
 
-class Solution
+class Solution_10_10
 {
 public:
-	Solution(const vector<int> &vec)
+	Solution_10_10(const vector<int> &vec)
 		: root(nullptr)
 	{
 		for (auto &x : vec)
@@ -115,17 +115,15 @@ private:
 	RankedNode *root = nullptr;
 };
 
-int main()
+void test_Ch_10_10()
 {
 	//vector<int> vecIn{ 20, 15, 25, 10, 23, 5, 13, 24 };
 	vector<int> vecIn{5, 1, 4, 4, 5, 9, 7, 13, 3};
 	vector<int> vecRank{1, 3, 4};
-	Solution sol(vecIn);
+	Solution_10_10 sol(vecIn);
 
 	for (auto x : vecRank)
 	{
 		cout << "Rank of " << x << " => " << sol.getRank(x) << endl;
 	}
-
-	return 0;
 }

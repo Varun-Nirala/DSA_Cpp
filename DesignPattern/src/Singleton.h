@@ -10,6 +10,11 @@ public:
 		static Singleton m_instance;
 		return m_instance;
 	}
+
+	void doWork()
+	{
+		std::cout << "Singleton:: Doing work\n";
+	}
 private:
 	Singleton() = default;
 	~Singleton() = default;
@@ -27,6 +32,10 @@ public:
 		return *m_pInstance;
 	}
 
+	void doWork()
+	{
+		std::cout << "Singleton1:: Doing work\n";
+	}
 private:
 	Singleton1() = default;
 	~Singleton1() = default;

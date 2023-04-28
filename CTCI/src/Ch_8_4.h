@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_8_4
 {
 	list<list<char>> powerSetUtil(vector<char> &vec, int index)
 	{
@@ -40,10 +40,10 @@ public:
 	}
 };
 
-int main()
+void test_Ch_8_4()
 {
 	vector<char> vec({ 'a', 'b', 'c', 'd', 'e', 'f' });
-	Solution sol;
+	Solution_8_4 sol;
 
 	list<list<char>> allset = sol.powerSet(vec);
 
@@ -55,7 +55,4 @@ int main()
 		}
 		cout << endl;
 	}
-
-	return 0;
 }
-

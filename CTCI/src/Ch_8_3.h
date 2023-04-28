@@ -13,7 +13,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_8_3
 {
 	int magicIndexUtil(const vector<int> &vec, int start, int end)
 	{
@@ -39,17 +39,14 @@ class Solution
 public:
 	int magicIndex(const vector<int> &vec)
 	{
-		return magicIndexUtil(vec, 0, vec.size() - 1);
+		return magicIndexUtil(vec, 0, (int)vec.size() - 1);
 	}
 };
 
-int main()
+void test_Ch_8_3()
 {
 	vector<int> vec({ -10, -5, 2, 2, 2, 3, 4, 7, 9, 12, 13 });
-	Solution sol;
+	Solution_8_3 sol;
 
 	cout << sol.magicIndex(vec) << endl;
-
-	return 0;
 }
-

@@ -84,7 +84,7 @@ private:
 
 			for (int i = 0; i < min; ++i)
 			{
-				ans.push_back(std::string(1, ch + 'a'));
+				ans.push_back(std::string(1, static_cast<char>(ch) + 'a'));
 			}
 			min = INT_MAX;
 		}

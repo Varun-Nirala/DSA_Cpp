@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_16_5
 {
 	int factorsOf5(int num)
 	{
@@ -50,14 +50,12 @@ public:
 	}
 };
 
-int main()
+void test_Ch_16_5()
 {
-	Solution sol;
+	Solution_16_5 sol;
 
 	for (int i = 1; i < 31; ++i)
 	{
 		cout << "Number of trailing zeros in " << i << "! is " << sol.countTrailingZerosInFactorial_1(i) << endl;
 	}
-
-	return 0;
 }

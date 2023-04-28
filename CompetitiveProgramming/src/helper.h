@@ -163,7 +163,7 @@ void print(std::string str, size_t totalTest, size_t failed)
 }
 
 inline int as_int(char ch) { return ch - '0'; }
-inline char as_char(int num) { return num + '0'; }
+inline char as_char(int num) { return static_cast<char>(num + '0'); }
 
 template<typename T>
 ListNode<T>* reverseList(ListNode<T>* head)

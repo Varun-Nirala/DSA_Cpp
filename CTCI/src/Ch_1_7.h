@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_1_7
 {
 public:
 	bool rotate90(vector<vector<char>> &mat)
@@ -17,7 +17,7 @@ public:
 		if (mat.size() == 0 || mat.size() != mat[0].size())
 			return false;
 
-		int n = mat.size();
+		int n = (int)mat.size();
 		for (int layer = 0; layer < n / 2; layer++)
 		{
 			int first = layer;
@@ -27,7 +27,7 @@ public:
 			{
 				int offset = i - first;
 
-				int top = mat[first][i];	// Save top
+				char top = mat[first][i];	// Save top
 
 				// left->top
 				mat[first][i] = mat[last - offset][first];
@@ -46,7 +46,7 @@ public:
 	}
 };
 
-int main()
+void test_Ch_1_7()
 {
 	vector<vector<char>> input{
 		{ 'a', 'b', 'c', 'd', 'e' },
@@ -64,7 +64,7 @@ int main()
 		{ 'i', 'h', 'g', 'f', 'e' }
 	};
 
-	Solution sol;
+	Solution_1_7 sol;
 
 	sol.rotate90(input);
 
@@ -76,6 +76,4 @@ int main()
 	{
 		cout << "FAILED\n";
 	}
-	return 0;
 }
-

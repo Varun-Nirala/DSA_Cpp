@@ -26,7 +26,7 @@ public:
 	{}
 };
 
-class Solution
+class Solution_16_10
 {
 	vector<int> getSortedYears(const vector<Person> &people, bool byBirth)
 	{
@@ -55,6 +55,7 @@ public:
 	// Running time is O (P log P)
 	int yearWithMostLivingPeople_1(const vector<Person> &people, int minYear, int maxYear)
 	{
+		(void)maxYear;
 		vector<int> births = getSortedYears(people, true);
 		vector<int> deaths = getSortedYears(people, false);
 
@@ -129,7 +130,7 @@ private:
 	}
 };
 
-int main()
+void test_Ch_16_10()
 {
 	vector<Person> people = {
 		{1912, 1915},
@@ -143,11 +144,10 @@ int main()
 		{1983, 1999},
 		{1975, 1994}
 	};
-	Solution sol;
+	Solution_16_10 sol;
 
 	int minYear = 1900;
 	int maxYear = 2000;
 	cout << sol.yearWithMostLivingPeople_1(people, minYear, maxYear) << endl;
 	cout << sol.yearWithMostLivingPeople_2(people, minYear, maxYear) << endl;
-	return 0;
 }

@@ -59,7 +59,7 @@ private:
         }
     }
 
-    inline bool notInRow(std::vector<std::string>& vec, size_t row, size_t col)
+    inline bool notInRow(std::vector<std::string>& vec, size_t row)
     {
         for (size_t i = 0; i < vec[row].size(); ++i)
         {
@@ -69,7 +69,7 @@ private:
         return true;
     }
 
-    inline bool notInCol(std::vector<std::string>& vec, size_t row, size_t col)
+    inline bool notInCol(std::vector<std::string>& vec, size_t col)
     {
         for (size_t i = 0; i < vec.size(); ++i)
         {
@@ -120,7 +120,7 @@ private:
 
     inline bool isValid(std::vector<std::string>& vec, size_t row, size_t col)
     {
-        return notInRow(vec, row, col) && notInCol(vec, row, col) && notInDiag(vec, row, col);
+        return notInRow(vec, row) && notInCol(vec, col) && notInDiag(vec, row, col);
     }
 private:
     std::vector<std::vector<std::string>>       m_ans;

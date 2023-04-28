@@ -46,13 +46,13 @@ public:
 	}
 };
 
-class Solution
+class Solution_10_9
 {
 	Coordinate searchNormal(const vector<vector<int>> &mat, int val)
 	{
 		Coordinate coord(-1, -1);
 		int row = 0;
-		int col = mat[0].size() - 1;
+		int col = (int)mat[0].size() - 1;
 
 		while (row < mat.size() && col >= 0)
 		{
@@ -133,7 +133,7 @@ class Solution
 	Coordinate binarySearch(const vector<vector<int>> &mat, int val)
 	{
 		Coordinate origin(0, 0);
-		Coordinate dest(mat.size() - 1, mat[0].size() - 1);
+		Coordinate dest((int)mat.size() - 1, (int)mat[0].size() - 1);
 		return findElement(mat, origin, dest, val);
 	}
 
@@ -170,9 +170,9 @@ public:
 	}
 };
 
-int main()
+void test_Ch_10_9()
 {
-	Solution sol;
+	Solution_10_9 sol;
 	vector<vector<int>> mat{
 		{15, 20, 40, 85},
 		{20, 35, 80, 95},
@@ -182,6 +182,4 @@ int main()
 
 	int numToSearch = 55;
 	sol.find(mat, numToSearch, true);
-
-	return 0;
 }

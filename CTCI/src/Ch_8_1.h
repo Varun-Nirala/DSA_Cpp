@@ -13,7 +13,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_8_1
 {
 public:
 	int countPossibleWays(int n)	// O(pow(3, n))
@@ -52,9 +52,9 @@ private:
 	}
 };
 
-int main()
+void test_Ch_8_1()
 {
-	Solution sol;
+	Solution_8_1 sol;
 
 	for (int i = 0; i < 37; ++i)
 	{
@@ -72,6 +72,4 @@ int main()
 
 		cout << val1 << ", " << val2 << endl;
 	}
-
-	return 0;
 }

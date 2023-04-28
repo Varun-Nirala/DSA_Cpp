@@ -16,32 +16,31 @@
 #include <vector>
 #include <stack>
 
-#include "Ch_4_graph.h"
+#include "ds_graph.h"
 
 using namespace std;
-using namespace nsGraph;
 
-class Solution
+class Solution_4_7
 {
-	bool doDFS(Node *node, stack<Node *> &order)
+	bool doDFS(nsGraph::Node *node, stack<nsGraph::Node *> &order)
 	{
-		if (node->state == VISITING)
+		if (node->state == nsGraph::VISITING)
 		{
 			return false;	//Cycle detected
 		}
 
-		if (node->state == UNVISITED)
+		if (node->state == nsGraph::UNVISITED)
 		{
-			node->state = VISITING;
-			vector<WeightedNode> adjacent = node->getAdjacent();
-			for (WeightedNode &w : adjacent)
+			node->state = nsGraph::VISITING;
+			vector<nsGraph::WeightedNode> adjacent = node->getAdjacent();
+			for (nsGraph::WeightedNode &w : adjacent)
 			{
-				if (!doDFS(w.node, order))
+				if (!doDFS(w.pNode, order))
 				{
 					return false;
 				}
 			}
-			node->state = VISITED;
+			node->state = nsGraph::VISITED;
 			order.push(node);
 		}
 
@@ -49,19 +48,19 @@ class Solution
 	}
 
 public:
-	vector<Node *> buildOrder(Graph &g)
+	vector<nsGraph::Node *> buildOrder(nsGraph::Graph &g)
 	{
-		vector<Node *> ans;
-		stack<Node *> order;
+		vector<nsGraph::Node *> ans;
+		stack<nsGraph::Node *> order;
 		bool hasOrder = true;
 
 		g.resetState();
 
-		vector<Node *> &nodes = g.getAllNodes();
+		vector<nsGraph::Node *> &nodes = g.getAllNodes();
 
-		for (Node *node : nodes)
+		for (nsGraph::Node *node : nodes)
 		{
-			if (node->state == UNVISITED)
+			if (node->state == nsGraph::UNVISITED)
 			{
 				if (!doDFS(node, order))
 				{
@@ -86,7 +85,7 @@ public:
 	}
 };
 
-int main()
+void test_Ch_4_7()
 {
 	vector<char> projects = { 'a' , 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
 	vector<pair<char, char>> dependencies = {
@@ -132,9 +131,9 @@ int main()
 
 	graph.print();
 
-	Solution sol;
+	Solution_4_7 sol;
 
-	vector<Node *> order = sol.buildOrder(graph);
+	vector<nsGraph::Node*> order = sol.buildOrder(graph);
 
 	if (order.empty())
 	{
@@ -149,6 +148,4 @@ int main()
 		}
 		cout << endl;
 	}
-
-	return 0;
 }

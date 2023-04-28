@@ -15,10 +15,10 @@ namespace nsGraph
 	};
 
 	struct Node;
-	typedef struct WeightedNode
+	struct WeightedNode
 	{
-		Node		*node = nullptr;
-		int		weight = 0;
+		Node	*pNode{};
+		int		weight{};
 
 		~WeightedNode();
 
@@ -26,10 +26,11 @@ namespace nsGraph
 
 		char getName();
 		bool isVisited();
-	}WeightedNode;
+	};
 
-	typedef struct Node {
-		char								name;
+	struct Node 
+	{
+		char							name;
 		std::vector<WeightedNode>		edges;
 		std::vector<WeightedNode>		inEdges;
 		State							state;
@@ -56,7 +57,7 @@ namespace nsGraph
 		WeightedNode* getNode(char ch)
 		{
 			std::vector<WeightedNode>::iterator it = find_if(edges.begin(), edges.end(),
-				[ch](WeightedNode &w) { return w.node->name = ch; });
+				[ch](WeightedNode &w) { return w.pNode->name = ch; });
 
 			return it == edges.end() ? nullptr : &(*it);
 		}
@@ -64,18 +65,19 @@ namespace nsGraph
 		void resetState() { state = UNVISITED; }
 
 		bool isVisited() { return state == VISITED; }
-	}Node;
+	};
 
 	WeightedNode::~WeightedNode()
 	{
-		node = nullptr;
+		pNode = nullptr;
 	}
 	WeightedNode::WeightedNode(Node *n, int w)
-		: node(n)
+		: pNode(n)
 		, weight(w)
 	{}
-	char WeightedNode::getName() { return node->name; }
-	bool WeightedNode::isVisited() { return node->isVisited(); }
+
+	char WeightedNode::getName() { return pNode->name; }
+	bool WeightedNode::isVisited() { return pNode->isVisited(); }
 
 	class Graph
 	{
@@ -104,14 +106,14 @@ namespace nsGraph
 			}
 		}
 
-		void addNode(char val, int weight = 0)
+		void addNode(char val)
 		{
 			nodes.emplace_back(new Node(val));
 		}
 
 		Node* getNode(char val)
 		{
-			std::vector<Node *>::iterator	 it = find_if(nodes.begin(), nodes.end(), [val](Node *n) {
+			std::vector<Node *>::iterator it = find_if(nodes.begin(), nodes.end(), [val](Node *n) {
 				return n->name == val;
 			});
 
@@ -167,7 +169,7 @@ namespace nsGraph
 				std::cout << node->name << "    ";
 				for (int j = 0; j < node->edges.size(); ++j)
 				{
-					std::cout << "->{" << node->edges[j].node->name << "," << node->edges[j].weight << "}";
+					std::cout << "->{" << node->edges[j].pNode->name << "," << node->edges[j].weight << "}";
 				}
 
 				if (node->edges.empty())

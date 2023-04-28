@@ -47,7 +47,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_16_7
 {
 	/* Flips a 1 to 0 and a 0 to 1 */
 	int flip(int bit)
@@ -85,11 +85,10 @@ public:
 	}
 };
 
-int main()
+void test_Ch_16_7()
 {
 	int numA = 9;
 	int numB = 10;
-	Solution sol;
+	Solution_16_7 sol;
 	cout << "Max of (" << numA << ", " << numB << ") is " << sol.numberMax(numA, numB) << endl;
-	return 0;
 }

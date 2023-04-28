@@ -15,18 +15,24 @@
 #include <map>
 #include <algorithm>
 
+#include "common.h"
+
 using namespace std;
 
-class Solution
+class Solution_10_3
 {
 	int search(const vector<int> &vec, int left, int right, int val)
 	{
 		int mid = (left + right) / 2;
 		if (vec[mid] == val)
+		{
 			return mid;
+		}
 
 		if (right < left)
+		{
 			return -1;
+		}
 
 		if (vec[left] < vec[mid])	// Left is normally ordered;
 		{
@@ -50,23 +56,22 @@ class Solution
 				return search(vec, left, mid - 1, val);
 			}
 		}
-		else if (vec[left] == vec[mid])	// it means left half or right half is all repeats
+
+		// it means left half or right half is all repeats
+		if (vec[mid] != vec[right])	// If right is different search it
 		{
-			if (vec[mid] != vec[right])	// If right is different search it
+			return search(vec, mid + 1, right, val);
+		}
+		else   // else we have to search both left and right
+		{
+			int id = search(vec, left, mid - 1, val);
+			if (id == -1)
 			{
 				return search(vec, mid + 1, right, val);
 			}
-			else   // else we have to search both left and right
+			else
 			{
-				int id = search(vec, left, mid - 1, val);
-				if (id == -1)
-				{
-					return search(vec, mid + 1, right, val);
-				}
-				else
-				{
-					return id;
-				}
+				return id;
 			}
 		}
 	}
@@ -75,7 +80,7 @@ public:
 	void find(const vector<int> &vec, int val)
 	{
 		cout << "searching for " << val << "\n";
-		int id = search(vec, 0, vec.size() - 1, val);
+		int id = search(vec, 0, (int)vec.size() - 1, val);
 		if (id != -1)
 		{
 			cout << "Found " << "vec[" << id << "] = " << val << endl;
@@ -87,27 +92,13 @@ public:
 	}
 };
 
-template <typename T>
-void PrintArray(const vector<T> &vec)
+void test_Ch_10_3()
 {
-	cout << "Printing Array : ";
-	for (auto x : vec)
-	{
-		cout << x << " ";
-	}
-	cout << endl;
-}
-
-int main()
-{
-	Solution sol;
+	Solution_10_3 sol;
 	vector<int> vec = { 15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14 };
 
-	PrintArray(vec);
+	PrintArray(vec, std::string("\n\nPrinting Vec"));
 
 	int num = 5;
-	sol.find(vec, 5);
-
-	return 0;
+	sol.find(vec, num);
 }
-

@@ -9,59 +9,27 @@
 
 #include <set>
 
+#include "ds_list.h"
+
 using namespace std;
-
-typedef struct ListNode {
-	int val;
-	ListNode *next;
-	ListNode() : val(0), next(nullptr) {}
-	ListNode(int x) : val(x), next(nullptr) {}
-	ListNode(int x, ListNode *next) : val(x), next(next) {}
-}ListNode;
-
-ListNode* createList(const vector<int> &v)
-{
-	if (v.empty())
-		return nullptr;
-	ListNode *head = new ListNode(v[0]);
-	ListNode *p = head;
-
-	for (int i = 1; i < v.size(); ++i)
-	{
-		p->next = new ListNode(v[i]);
-		p = p->next;
-	}
-	return head;
-}
-
-vector<int> PrintList(ListNode *head)
-{
-	vector<int> vec;
-	while (head)
-	{
-		vec.push_back(head->val);
-		cout << head->val << "->";
-		head = head->next;
-	}
-	return vec;
-}
 
 int getNumber(vector<int> &vec)
 {
 	int ans = 0;
-	int mult = vec.size() - 1;
+	int mult = (int)vec.size() - 1;
 	for (auto x : vec)
 	{
-		ans += x * pow(10, mult--);
+		ans += x * (int)pow(10, mult--);
 	}
 	return ans;
 }
 
-class Solution {
+class Solution_2_5
+{
 	void print(ListNode *h1, bool inRev)
 	{
 		vector<int> vec;
-		vec = PrintList(h1);
+		PrintList(h1, vec);
 		if (inRev)
 			reverse(vec.begin(), vec.end());
 		cout << "\t Number = " << getNumber(vec) << endl;;
@@ -213,9 +181,9 @@ public:
 	}
 };
 
-int main()
+void test_Ch_2_5()
 {
-	Solution sol;
+	Solution_2_5 sol;
 	vector<int> vec1({ 7, 1, 6 });
 	vector<int> vec2({ 5, 9, 4 });
 
@@ -225,6 +193,4 @@ int main()
 	sol.sumListLeastSignificantFirst(h1, h2, true);
 
 	//sol.sumListMostSignificantFirst(h1, h2);
-
-	return 0;
 }

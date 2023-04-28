@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_8_8
 {
 	void getAllPerms(map<char, int> &freq, string prefix, int remaining, vector<string> &results)
 	{
@@ -41,14 +41,14 @@ public:
 			freq[x]++;
 
 		vector<string> result;
-		getAllPerms(freq, "", str.size(), result);
+		getAllPerms(freq, "", (int)str.size(), result);
 		return result;
 	}
 };
 
-int main()
+void test_Ch_8_8()
 {
-	Solution sol;
+	Solution_8_8 sol;
 
 	vector<string> permutations = sol.getUniquePerms("aabbbbc");
 
@@ -56,7 +56,4 @@ int main()
 	{
 		cout << x << endl;
 	}
-
-	return 0;
 }
-

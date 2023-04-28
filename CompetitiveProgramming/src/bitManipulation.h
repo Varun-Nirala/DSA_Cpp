@@ -33,13 +33,13 @@ string convertIntToBinary(L_INT number)
 
 L_INT convertBinaryToInt(const string &s)
 {
-	int size = s.size();
+	int size = (int)s.size();
 	int i = 0;
 	int number = 0;
 
 	while(size--)
 	{
-		number = number + (pow(2, i) * (s[size] - '0'));
+		number = number + ((int)pow(2, i) * (s[size] - '0'));
 		i++;
 	}
 return number;

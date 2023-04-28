@@ -11,53 +11,9 @@
 #include <list>
 #include <algorithm>
 
+#include "ds_ponitAndLine.h"
+
 using namespace std;
-
-typedef struct Point
-{
-	double x;
-	double y;
-
-	Point(double xx, double yy)
-		: x(xx)
-		, y(yy)
-	{}
-
-	Point(const Point &p)
-		: x(p.x)
-		, y(p.y)
-	{}
-
-	void setLocation(Point &p)
-	{
-		x = p.x;
-		y = p.y;
-	}
-
-	void setLocation(double xx, double yy)
-	{
-		x = xx;
-		y = yy;
-	}
-}Point;
-
-typedef struct Line
-{
-	Point pstart;
-	Point pend;
-	double slope;
-	double yIntercept;
-
-	Line(Point start, Point end)
-		: pstart(start)
-		, pend(end)
-	{
-		double deltaY = end.y - start.y;
-		double deltaX = end.x - start.x;
-		slope = deltaY / deltaX;
-		yIntercept = end.y - slope * end.x;
-	}
-}Line;
 
 class Square
 {
@@ -85,7 +41,7 @@ public:
 	/*	Return the point where the lin segement onnecting mid1 and mid2 intercepts the edge of square
 	*	1. That is, draaw a line from the mid2 to mid1, and continue it until the edge of the square.
 	*/
-	Point extend(Point mid1, Point mid2, double size)
+	Point extend(Point mid1, Point mid2, double inSize)
 	{
 		/* Find what direction the line mid2 -> mid1 goes */
 		double xDir = mid1.x < mid2.x ? -1 : 1;
@@ -96,7 +52,7 @@ public:
 		*/
 		if (mid1.x == mid2.x)
 		{
-			return Point(mid1.x, mid1.y + yDir * size / 2.0);
+			return Point(mid1.x, mid1.y + yDir * inSize / 2.0);
 		}
 
 		double slope = (mid1.y - mid2.y) / (mid1.x - mid2.x);	// mid2 is start and mid1 is end
@@ -113,19 +69,19 @@ public:
 
 		if (abs(slope) == 1)
 		{
-			x1 = mid1.x + xDir * size / 2.0;
-			y1 = mid1.y + yDir * size / 2.0;
+			x1 = mid1.x + xDir * inSize / 2.0;
+			y1 = mid1.y + yDir * inSize / 2.0;
 		}
 		else if (abs(slope) < 1)    // Shallow
 		{
-			x1 = mid1.x + xDir * size / 2.0;
+			x1 = mid1.x + xDir * inSize / 2.0;
 			y1 = slope * (x1 - mid1.x) + mid1.y;
 		}
 		else    // Steep
 		{
 
 			x1 = (y1 - mid1.y) / slope + mid1.x;
-			y1 = mid1.y + yDir * size / 2.0;
+			y1 = mid1.y + yDir * inSize / 2.0;
 		}
 		return Point(x1, y1);
 	}
@@ -160,7 +116,7 @@ public:
 	}
 };
 
-class Solution
+class Solution_16_13
 {
 public:
 	Line bisectSquares(Square a, Square b)
@@ -169,17 +125,15 @@ public:
 	}
 };
 
-int main()
+void test_Ch_16_13()
 {
 	Square squareA(1, 4, 5, 8);
 	Square squareB(2, 5, 6, 9);
-	Solution sol;
+	Solution_16_13 sol;
 
 	Line line = sol.bisectSquares(squareA, squareB);
 
 	cout << "Slope = " << line.slope << ", Y Intercept = " << line.yIntercept << endl;
 	cout << "Start Point  = (" << line.pstart.x << ", " << line.pstart.y << endl;
 	cout << "End   Point  = (" << line.pend.x << ", " << line.pend.y << endl;
-
-	return 0;
 }

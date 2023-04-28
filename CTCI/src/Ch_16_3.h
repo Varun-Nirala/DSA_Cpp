@@ -32,72 +32,16 @@
 #include <vector>
 #include <map>
 #include <algorithm>
+#include <utility>
+
+#include "ds_ponitAndLine.h"
 
 using namespace std;
 
-typedef struct Point
-{
-	double x;
-	double y;
-
-	Point(double xx, double yy)
-		: x(xx)
-		, y(yy)
-	{}
-
-	Point(const Point &p)
-		: x(p.x)
-		, y(p.y)
-	{}
-
-	void setLocation(Point &p)
-	{
-		x = p.x;
-		y = p.y;
-	}
-
-	void setLocation(double xx, double yy)
-	{
-		x = xx;
-		y = yy;
-	}
-}Point;
-
-typedef struct Line
-{
-	double slope;
-	double yIntercept;
-
-	Line(Point start, Point end)
-	{
-		double deltaY = end.y - start.y;
-		double deltaX = end.x - start.x;
-		slope = deltaY / deltaX;
-		yIntercept = end.y - slope * end.x;
-	}
-}Line;
-
-bool isBetween(int start, int middle, int end)
-{
-	if (start > end)
-	{
-		return middle >= end && middle <= start;
-	}
-	else if (start < end)
-	{
-		return middle >= start && middle <= end;
-	}
-}
-
-bool isBetween(const Point &start, const Point &middle, const Point &end)
-{
-	return isBetween(start.x, middle.x, end.x) && isBetween(start.y, middle.y, end.y);
-}
-
-class Solution
+class Solution_16_3
 {
 public:
-	Point* intersection(const Point &start1, const Point &end1, const Point &start2, const Point &end2)
+	Point* intersection(Point &start1, Point &end1, Point &start2, Point &end2)
 	{
 		/* START Rearranging these so that, in order of x values: start is before end and point1 is before point 2.*/
 		if (start1.x > end1.x)
@@ -147,9 +91,16 @@ public:
 	}
 };
 
-int main()
+void test_Ch_16_3()
 {
-	Solution sol;
+	Solution_16_3 sol;
 
-	return 0;
+	Point start1(0, 0);
+	Point end1(5, 5);
+	Point start2(0, 1);
+	Point end2(10, 4);
+
+	Point *pPoint = sol.intersection(start1, end1, start2, end2);
+
+	pPoint->print();
 }

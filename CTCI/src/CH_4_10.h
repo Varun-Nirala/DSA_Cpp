@@ -10,186 +10,110 @@
 #include <list>
 #include <map>
 
+#include "ds_binaryTree.h"
+
 using namespace std;
 
-const int NULL_NODE = INT_MIN;
-
-typedef struct Node
-{
-	int		val;
-	Node		*lc;
-	Node		*rc;
-	Node		*parent;
-
-	Node(int v, Node *p = nullptr)
-		: val(v)
-		, lc(nullptr)
-		, rc(nullptr)
-		, parent(p)
-	{}
-}Node;
-
-class Solution
+class Solution_4_10
 {
 public:
-	map<int, Node *> mMap;
+	map<int, BTreeNode*> mMap;
 
-	Node* createBinaryTree(vector<int> &vec)
+	bool contains(BTreeNode *pA, BTreeNode *pB)
 	{
-		if (vec.empty())
-			return nullptr;
-		int i = 0;
-		Node *root = new Node(vec[i++]);
-
-		mMap[root->val] = root;
-
-		queue<Node *> que;
-		que.push(root);
-
-		while (i < vec.size())
+		if (!pB)
 		{
-			Node *n = que.front();
-			mMap[n->val] = n;
-			que.pop();
-			if (vec[i] != NULL_NODE)
-			{
-				n->lc = new Node(vec[i], n);
-				que.push(n->lc);
-				mMap[vec[i]] = n->lc;
-			}
-			i++;
-
-			if (i < vec.size() && vec[i] != NULL_NODE)
-			{
-				n->rc = new Node(vec[i], n);
-				que.push(n->rc);
-				mMap[vec[i]] = n->rc;
-			}
-			i++;
-		}
-		return root;
-	}
-
-	bool contains(Node *t1, Node *t2)
-	{
-		if (!t2)
 			return true;	// Null tree is always a sub tree
-		return subTree(t1, t2);
+		}
+		return subTree(pA, pB);
 	}
 
 private:
-	bool subTree(Node *t1, Node *t2)
+	bool subTree(BTreeNode *pA, BTreeNode *pB)
 	{
-		if (!t1)
+		if (!pA)
 		{
 			return false;
 		}
-		else if (t1->val == t2->val && match(t1, t2))
+		else if (pA->val == pB->val && match(pA, pB))
 		{
 			return true;
 		}
-		return subTree(t1->lc, t2) || subTree(t1->rc, t2);
+		return subTree(pA->lc, pB) || subTree(pA->rc, pB);
 	}
 
-	bool match(Node *t1, Node *t2)
+	bool match(BTreeNode *pA, BTreeNode *pB)
 	{
-		if (!t1 && !t2)
+		if (!pA && !pB)
+		{
 			return true;
-		else if (!t1 || !t2)
+		}
+		else if (!pA || !pB)
+		{
 			return false;
-		else if (t1->val != t2->val)
+		}
+		else if (pA->val != pB->val)
+		{
 			return false;
-		return match(t1->lc, t2->lc) && match(t1->rc, t2->rc);
+		}
+		return match(pA->lc, pB->lc) && match(pA->rc, pB->rc);
 	}
 
-	Node* getSibling(Node *n)
+	BTreeNode* getSibling(BTreeNode *pNode)
 	{
-		if (!n || !n->parent)
+		if (!pNode || !pNode->parent)
+		{
 			return nullptr;
+		}
 
-		return n->parent->lc == n ? n->parent->rc : n->parent->lc;
+		return pNode->parent->lc == pNode ? pNode->parent->rc : pNode->parent->lc;
 	}
 
-	bool covers(Node *root, Node *p)		// check if p is under root
+	bool covers(BTreeNode* pRoot, BTreeNode* p)		// check if p is under root
 	{
-		if (!root) 	return false;
-		if (root == p) return true;
+		if (!pRoot)
+		{
+			return false;
+		}
 
-		return covers(root->lc, p) || covers(root->rc, p);
+		if (pRoot == p)
+		{
+			return true;
+		}
+
+		return covers(pRoot->lc, p) || covers(pRoot->rc, p);
 	}
 
-	int getDepth(Node *node)
+	int getDepth(BTreeNode *pNode)
 	{
 		int depth = 0;
-		while (node)
+		while (pNode)
 		{
-			node = node->parent;
+			pNode = pNode->parent;
 			depth++;
 		}
 		return depth;
 	}
 
-	Node* goUpBy(Node *node, int up)
+	BTreeNode* goUpBy(BTreeNode *pNode, int up)
 	{
-		while (up > 0 && node)
+		while (up > 0 && pNode)
 		{
 			up--;
 		}
-		return node;
+		return pNode;
 	}
 };
 
-void inorder(Node *root)
+void test_Ch_4_10()
 {
-	if (root)
-	{
-		inorder(root->lc);
-		cout << root->val << " ";
-		inorder(root->rc);
-	}
-}
-
-void levelOrder(Node *root)
-{
-	if (!root)
-		return;
-	queue<Node *> que;
-	que.push(root);
-
-	int parentCount = 1;
-
-	while (!que.empty())
-	{
-		Node *node = que.front();
-		que.pop();
-
-		if (node)
-		{
-			cout << node->val << " ";
-			que.push(node->lc);
-			que.push(node->rc);
-		}
-		else
-		{
-			cout << "NULL ";
-		}
-
-		if (--parentCount == 0)
-		{
-			cout << endl;
-			parentCount = que.size();
-		}
-	}
-}
-
-int main()
-{
-	Solution sol;
+	Solution_4_10 sol1;
+	Solution_4_10 sol2;
 	vector<int> vec1({ 1, 2, 3, 4, 5, 6, 7, NULL_NODE, 8, 9, 10, 11, NULL_NODE, 12, 13 });
 	vector<int> vec2({ 4, NULL_NODE, 8 });
 
-	Node *t1 = sol.createBinaryTree(vec1);
-	Node *t2 = sol.createBinaryTree(vec2);
+	BTreeNode *t1 = createBinaryTree(vec1, sol1.mMap);
+	BTreeNode *t2 = createBinaryTree(vec2, sol2.mMap);
 
 	cout << "InOrder Traversal of t1\n";
 	inorder(t1);
@@ -207,7 +131,5 @@ int main()
 	levelOrder(t2);
 	cout << endl;
 
-	cout << "Does T1 contains t2 ? : " << boolalpha << sol.contains(t1, t2) << endl;
-
-	return 0;
+	cout << "Does T1 contains t2 ? : " << boolalpha << sol1.contains(t1, t2) << endl;
 }

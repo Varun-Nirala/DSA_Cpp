@@ -10,12 +10,12 @@
 
 using namespace std;
 
-class Solution
+class Solution_1_3
 {
 public:
 	void URLify(string &str, int trueLength)		// trueLenth is length after trimming of end spaces
 	{
-		int rt = str.size();
+		int rt = (int)str.size();
 
 		if (rt == trueLength)
 			return;
@@ -55,13 +55,12 @@ public:
 	}
 };
 
-int main()
+void test_Ch_1_3()
 {
 	string str("Mr John Smith      ");
 	//string str("Mr%20John%20Smith");
-	Solution sol;
+	Solution_1_3 sol;
 
 	sol.URLify(str, 13);
 	cout << str << endl;
-	return 0;
 }

@@ -17,27 +17,18 @@
 #include <map>
 #include <algorithm>
 
+#include "common.h"
+
 using namespace std;
 
-template <typename T>
-void PrintArray(const vector<T> &vec, const string &str)
-{
-	cout << str;
-	for (auto x : vec)
-	{
-		cout << x << " ";
-	}
-	cout << endl;
-}
-
-class Solution
+class Solution_10_11
 {
 public:
 	void rearrangeInPeakAndValleyWithSorting(vector<int> &vec)
 	{
 		cout << "Called : " << __FUNCTION__ << endl;
 		sort(vec.begin(), vec.end(), less<int>());
-		PrintArray(vec, "Printing Sorted Array : ");
+		PrintArray(vec, std::string("Printing Sorted Array : "));
 
 		for (int i = 1; i < vec.size(); i += 2)
 		{
@@ -63,7 +54,7 @@ private:
 	{
 		int a = b - 1;
 		int c = b + 1;
-		int size = vec.size();
+		int size = (int)vec.size();
 
 		int aValue = (a >= 0 && a < size) ? vec[a] : INT_MIN;
 		int bValue = (b >= 0 && b < size) ? vec[b] : INT_MIN;
@@ -83,19 +74,18 @@ private:
 	}
 };
 
-int main()
+void test_Ch_10_11()
 {
 	vector<int> vec{ 9, 8, 4, 0, 1, 7 };
-	Solution sol;
+	Solution_10_11 sol;
 
-	PrintArray(vec, "Printing Original Array : ");
+	PrintArray(vec, std::string("Printing Original Array : "));
 	sol.rearrangeInPeakAndValleyWithSorting(vec);
-	PrintArray(vec, "\n\nPrinting Re-arranged Array : ");
+	PrintArray(vec, std::string("\n\nPrinting Re-arranged Array : "));
 
 
 	vector<int> vec1{ 9, 8, 4, 0, 1, 7 };
-	PrintArray(vec1, "\n\nPrinting Original Array : ");
+	PrintArray(vec1, std::string("\n\nPrinting Original Array : "));
 	sol.rearrangeInPeakAndValleyWithSorting(vec1);
-	PrintArray(vec1, "\n\nPrinting Re-arranged Array : ");
-	return 0;
+	PrintArray(vec1, std::string("\n\nPrinting Re-arranged Array : "));
 }

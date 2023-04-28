@@ -13,7 +13,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_8_5
 {
 	vector<int> memo;
 	int multHelper(int smaller, int bigger)
@@ -45,12 +45,9 @@ public:
 	}
 };
 
-int main()
+void test_Ch_8_5()
 {
-	Solution sol;
+	Solution_8_5 sol;
 
 	cout << sol.multiply(177, 23) << endl;
-
-	return 0;
 }
-

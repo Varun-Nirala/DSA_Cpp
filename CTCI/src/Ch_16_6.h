@@ -13,7 +13,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_16_6
 {
 public:
 	int smallestDifference(vector<int> vecA, vector<int> vecB)
@@ -40,10 +40,11 @@ public:
 	}
 };
 
-int main()
+void test_Ch_16_6()
 {
 	vector<int> vecA = { 1, 3, 15, 11, 2 };
 	vector<int> vecB = { 23, 127, 235, 19, 8 };
-	Solution sol;
-	return 0;
+	Solution_16_6 sol;
+
+	std::cout << sol.smallestDifference(vecA, vecB) << std::endl;
 }

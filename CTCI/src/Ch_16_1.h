@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class Solution
+class Solution_16_1
 {
 public:
 	void swap1(int &a, int &b)
@@ -37,14 +37,13 @@ public:
 	}
 };
 
-int main()
+void test_Ch_16_1()
 {
-	Solution sol;
+	Solution_16_1 sol;
 	int a = 9;
 	int b = 5;
 
 	cout << "Before swapping : a = " << a << ", b = " << b << endl;
 	sol.swap3(a, b);
 	cout << "After swapping : a = " << a << ", b = " << b << endl;
-	return 0;
 }

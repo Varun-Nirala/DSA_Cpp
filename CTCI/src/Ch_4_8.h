@@ -13,229 +13,148 @@
 #include <list>
 #include <map>
 
+#include "ds_binaryTree.h"
+
 using namespace std;
 
-const int NULL_NODE = INT_MIN;
-
-typedef struct Node
-{
-	int		val;
-	Node		*lc;
-	Node		*rc;
-	Node		*parent;
-
-	Node(int v, Node *p = nullptr)
-		: val(v)
-		, lc(nullptr)
-		, rc(nullptr)
-		, parent(p)
-	{}
-}Node;
-
-class Solution
+class Solution_4_8
 {
 public:
-	map<int, Node *> mMap;
+	map<int, BTreeNode*> mMap;
 
-	Node* createBinaryTree(vector<int> &vec)
+	// Considering there is a link to parent
+	BTreeNode* commonAncestor_Sol_1(BTreeNode *pA, BTreeNode *pB)
 	{
-		if (vec.empty())
-			return nullptr;
-		int i = 0;
-		Node *root = new Node(vec[i++]);
+		int diff = getDepth(pA) - getDepth(pB);
 
-		mMap[root->val] = root;
+		BTreeNode *pShallowNode = diff > 0 ? pB : pA;
+		BTreeNode *pDeepNode = diff > 0 ? pA : pB;
 
-		queue<Node *> que;
-		que.push(root);
+		pDeepNode = goUpBy(pDeepNode, abs(diff));
 
-		while (i < vec.size())
+		while (pShallowNode != pDeepNode && pShallowNode && pDeepNode)
 		{
-			Node *n = que.front();
-			mMap[n->val] = n;
-			que.pop();
-			if (vec[i] != NULL_NODE)
-			{
-				n->lc = new Node(vec[i], n);
-				que.push(n->lc);
-				mMap[vec[i]] = n->lc;
-			}
-			i++;
-
-			if (i < vec.size() && vec[i] != NULL_NODE)
-			{
-				n->rc = new Node(vec[i], n);
-				que.push(n->rc);
-				mMap[vec[i]] = n->rc;
-			}
-			i++;
+			pShallowNode = pShallowNode->parent;
+			pDeepNode = pDeepNode->parent;
 		}
-		return root;
+
+		return !pShallowNode || !pDeepNode ? nullptr : pDeepNode;
 	}
 
 	// Considering there is a link to parent
-	Node* commonAncestor_Sol_1(Node *a, Node *b)
+	BTreeNode* commonAncestor_Sol_2(BTreeNode *pA, BTreeNode *pB)
 	{
-		Node *ancestor = nullptr;
-
-		int diff = getDepth(a) - getDepth(b);
-
-		Node *shallowNode = diff > 0 ? b : a;
-		Node *deepNode = diff > 0 ? a : b;
-
-		deepNode = goUpBy(deepNode, abs(diff));
-
-		while (shallowNode != deepNode && shallowNode && deepNode)
+		if (covers(pA, pB))
 		{
-			shallowNode = shallowNode->parent;
-			deepNode = deepNode->parent;
+			return pA;
 		}
 
-		return !shallowNode || !deepNode ? nullptr : deepNode;
-	}
-
-	// Considering there is a link to parent
-	Node* commonAncestor_Sol_2(Node *a, Node *b)
-	{
-		if (covers(a, b))
-			return a;
-
-		if (covers(b, a))
-			return b;
-
-		Node *sibling = getSibling(a);
-		Node *parent = a->parent;
-
-		while (!covers(sibling, b))
+		if (covers(pB, pA))
 		{
-			sibling = getSibling(parent);
-			parent = parent->parent;
+			return pB;
 		}
 
-		return parent;
+		BTreeNode *pSibling = getSibling(pA);
+		BTreeNode *pParent = pA->parent;
+
+		while (!covers(pSibling, pB))
+		{
+			pSibling = getSibling(pParent);
+			pParent = pParent->parent;
+		}
+
+		return pParent;
 	}
 
 	// Considering there is NO link to parent
-	Node* commonAncestor_Sol_3(Node *root, Node *a, Node *b)
+	BTreeNode* commonAncestor_Sol_3(BTreeNode *pRoot, BTreeNode *pA, BTreeNode *pB)
 	{
-		if (!root || root == a || root == b)
-			return root;
+		if (!pRoot || pRoot == pA || pRoot == pB)
+		{
+			return pRoot;
+		}
 
-		bool aIsOnLeft = covers(root->lc, a);
-		bool bIsOnLeft = covers(root->lc, b);
+		bool aIsOnLeft = covers(pRoot->lc, pA);
+		bool bIsOnLeft = covers(pRoot->lc, pB);
 
 		if (aIsOnLeft != bIsOnLeft)
-			return root;
-		Node *childSide = aIsOnLeft ? root->lc : root->rc;
-		return commonAncestor_Sol_3(childSide, a, b);
+		{
+			return pRoot;
+		}
+		BTreeNode*childSide = aIsOnLeft ? pRoot->lc : pRoot->rc;
+		return commonAncestor_Sol_3(childSide, pA, pB);
 	}
 private:
 
-	Node* getSibling(Node *n)
+	BTreeNode* getSibling(BTreeNode *pNode)
 	{
-		if (!n || !n->parent)
+		if (!pNode || !pNode->parent)
+		{
 			return nullptr;
+		}
 
-		return n->parent->lc == n ? n->parent->rc : n->parent->lc;
+		return pNode->parent->lc == pNode ? pNode->parent->rc : pNode->parent->lc;
 	}
 
-	bool covers(Node *root, Node *p)		// check if p is under root
+	bool covers(BTreeNode *pRoot, BTreeNode *pParent)		// check if p is under root
 	{
-		if (!root) 	return false;
-		if (root == p) return true;
+		if (!pRoot)
+		{
+			return false;
+		}
 
-		return covers(root->lc, p) || covers(root->rc, p);
+		if (pRoot == pParent)
+		{
+			return true;
+		}
+
+		return covers(pRoot->lc, pParent) || covers(pRoot->rc, pParent);
 	}
 
-	int getDepth(Node *node)
+	int getDepth(BTreeNode *pNode)
 	{
 		int depth = 0;
-		while (node)
+		while (pNode)
 		{
-			node = node->parent;
+			pNode = pNode->parent;
 			depth++;
 		}
 		return depth;
 	}
 
-	Node* goUpBy(Node *node, int up)
+	BTreeNode* goUpBy(BTreeNode *pNode, int up)
 	{
-		while (up > 0 && node)
+		while (up > 0 && pNode)
 		{
 			up--;
 		}
-		return node;
+		return pNode;
 	}
 };
 
-void inorder(Node *root)
+void test_Ch_4_8()
 {
-	if (root)
-	{
-		inorder(root->lc);
-		cout << root->val << " ";
-		inorder(root->rc);
-	}
-}
-
-void levelOrder(Node *root)
-{
-	if (!root)
-		return;
-	queue<Node *> que;
-	que.push(root);
-
-	int parentCount = 1;
-
-	while (!que.empty())
-	{
-		Node *node = que.front();
-		que.pop();
-
-		if (node)
-		{
-			cout << node->val << " ";
-			que.push(node->lc);
-			que.push(node->rc);
-		}
-		else
-		{
-			cout << "NULL ";
-		}
-
-		if (--parentCount == 0)
-		{
-			cout << endl;
-			parentCount = que.size();
-		}
-	}
-}
-
-int main()
-{
-	Solution sol;
+	Solution_4_8 sol;
 	vector<int> vec({ 1, 2, 3, 4, 5, 6, 7, NULL_NODE, 8, 9, 10, 11, NULL_NODE, 12, 13 });
 
-	Node *root = sol.createBinaryTree(vec);
+	BTreeNode *pRoot = createBinaryTree(vec, sol.mMap);
 
 	cout << "InOrder Traversal \n";
-	inorder(root);
+	inorder(pRoot);
 	cout << endl;
 
 	cout << "LevelOrder Traversal \n";
-	levelOrder(root);
+	levelOrder(pRoot);
 	cout << endl;
 
-	Node *n = sol.commonAncestor_Sol_3(root, sol.mMap[8], sol.mMap[4]);
+	BTreeNode *pNode = sol.commonAncestor_Sol_3(pRoot, sol.mMap[8], sol.mMap[4]);
 
-	if (!n)
+	if (!pNode)
 	{
 		cout << "NO COMMON ANCESTOR\n";
 	}
 	else
 	{
-		cout << n->val << endl;
+		cout << pNode->val << endl;
 	}
-
-	return 0;
 }
