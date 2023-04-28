@@ -17,7 +17,7 @@ else()
     add_compile_options(-Wall -Wextra -pedantic -Werror)
 endif()
 
-set(SOURCE_DIR ${CMAKE_SOURCE_DIR}/src)
+set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(COMMON_DIR ${SOURCE_DIR}/Common)
 set(D_ARR_DIR ${SOURCE_DIR}/DynamicArray)
 set(DP_DIR ${SOURCE_DIR}/DynamicProgramming)

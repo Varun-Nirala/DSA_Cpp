@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 
+project(DSA_Cpp)
+
 add_subdirectory(CompetitiveProgramming)
 add_subdirectory(CTCI)
 add_subdirectory(DesignPattern)
