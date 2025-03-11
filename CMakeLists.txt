@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.20...3.31)
 
 project(DSA_Cpp)
 
@@ -9,6 +9,7 @@ add_subdirectory(DS)
 add_subdirectory(FiniteStateMachine)
 add_subdirectory(Graph)
 add_subdirectory(HashMap)
+add_subdirectory(Preparation)
 add_subdirectory(STL_Style_DS)
 add_subdirectory(ThreadPool)
 add_subdirectory(Threads)
